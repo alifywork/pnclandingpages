@@ -1,0 +1,1481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PNC Logos Landing Page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&amp;family=Poppins:wght@500;600;700&amp;display=swap">
+<style>
+/* ==========================================================================
+   PNC Logos landing page
+   All page CSS lives in this one style block (no inline style attributes in the markup).
+   1. Original page CSS (kept from the original style block)
+   2. Base, layout & components (moved here from the old inline styles)
+   3. Reviews slider, logo carousels, quiz form, centered CTA & footer
+   4. Responsive breakpoints
+   ========================================================================== */
+
+/* ---------- 1. Original page CSS (kept) ---------- */
+body{margin:0;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+a{color:inherit}
+.btn-red{transition:background .15s}
+.btn-red:hover{background:#A30D30!important}
+.btn-line:hover{background:rgba(10,31,68,.07)!important}
+.btn-white:hover{background:#EEF1F6!important}
+.btn-line-w:hover{background:rgba(255,255,255,.14)!important}
+.nav-a:hover{color:#C4113A!important}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #2E4FE0;outline-offset:2px}
+.on-dark a:focus-visible,.on-dark button:focus-visible{outline-color:#FFD34D}
+.navlinks{display:flex}
+@media (max-width:860px){.navlinks{display:none}}
+details.faq>summary{list-style:none;cursor:pointer}
+details.faq>summary::-webkit-details-marker{display:none}
+details.faq .faq-ic{transition:transform .2s}
+details.faq[open] .faq-ic{transform:rotate(45deg)}
+details.faq>summary:hover h3{color:#C4113A!important}
+.badge-row{scrollbar-width:thin;scrollbar-color:#B9C3D6 transparent}.badge-row::-webkit-scrollbar{height:6px}.badge-row::-webkit-scrollbar-thumb{background:#B9C3D6;border-radius:3px}@media (max-width:720px){.hide-m{display:none!important}.stat2{border-left:0!important;border-top:1px solid #DCE2EC!important;padding-left:0!important}}
+@media (max-width:520px){.hdr{gap:8px 16px!important;padding-top:6px!important;padding-bottom:6px!important}.hdr-btn{display:none!important}.logo-h{height:25px!important}.btn-row a{flex:1 1 100%!important}.hero-svg{max-width:280px!important}}
+.hdr-tel:hover{color:#C4113A!important}@media (min-width:1040px){.hdr-tel{display:inline-flex!important}}@media (max-width:720px){.sticky-cta{display:block!important}footer>div{padding-bottom:84px!important}}
+@media (min-width:861px){.hero-main{min-height:calc(100vh - 84px)}.hero-svg{height:min(52vh,376px)!important;width:auto!important;max-width:100%!important}}
+.rv-btn:hover{background:#F4F6FA!important}@media (max-width:720px){.rv-btn{display:none!important}}
+.quiz [hidden]{display:none!important}.qopt:hover{border-color:#0A1F44!important;background:#F4F6FA!important}.qopt:focus-visible{outline:3px solid #2E4FE0;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.logo-anim{display:none!important}.logo-static{display:block!important}}
+
+/* ---- motion ---- */
+@keyframes pncUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes pncPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes pncBar{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+@keyframes pncBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes pncSlide{from{transform:translateY(110%)}to{transform:none}}
+@keyframes pncRing{0%{box-shadow:0 0 0 0 rgba(196,17,58,.45)}70%,100%{box-shadow:0 0 0 12px rgba(196,17,58,0)}}
+.hero-main>div:first-child>*{animation:pncUp .7s cubic-bezier(.2,.7,.2,1) both}
+.hero-main>div:first-child>*:nth-child(2){animation-delay:.08s}.hero-main>div:first-child>*:nth-child(3){animation-delay:.16s}.hero-main>div:first-child>*:nth-child(4){animation-delay:.24s}.hero-main>div:first-child>*:nth-child(5){animation-delay:.32s}.hero-main>div:first-child>*:nth-child(6){animation-delay:.4s}
+.hero-main>div:last-child{animation:pncPop .8s .2s cubic-bezier(.2,.7,.2,1) both}
+.hero-svg.fun>rect,.hero-svg.fun>text{animation:pncBar .6s cubic-bezier(.2,.7,.2,1) both}
+.hero-svg.fun>rect:nth-of-type(1),.hero-svg.fun>text:nth-of-type(1){animation-delay:.5s}.hero-svg.fun>rect:nth-of-type(2),.hero-svg.fun>text:nth-of-type(2){animation-delay:.8s}.hero-svg.fun>rect:nth-of-type(3),.hero-svg.fun>text:nth-of-type(3){animation-delay:1.1s}
+.hero-svg.fun>circle,.hero-svg.fun>g{animation:pncBob 3.4s ease-in-out infinite}
+.hero-svg.fun>circle:nth-of-type(odd),.hero-svg.fun>g:nth-of-type(odd){animation-delay:-1.4s}
+.sticky-cta{animation:pncSlide .5s 1.4s cubic-bezier(.2,.7,.2,1) both}
+.sticky-cta a{animation:pncRing 2.2s 2.2s infinite}
+a[href="#audit"],a[href="#quiz"],button,.qopt,summary{transition:transform .15s ease,background-color .2s ease,border-color .2s ease}
+a[href*="calendly"]:active,button:active,.qopt:active{transform:scale(.96)}
+.qopt:active{background:#EEF1F6!important}
+@supports (animation-timeline:view()){
+section:not(:first-of-type)>div>*{animation:pncUp linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+section:not(:first-of-type) .grid>*{animation:pncUp linear both;animation-timeline:view();animation-range:entry 5% entry 55%}
+section:not(:first-of-type) .grid>*:nth-child(even){animation-range:entry 12% entry 62%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---- desktop fx ---- */
+@keyframes pncProg{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pncGlow{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.12)}}
+@keyframes pncShine{from{background-position:-200% 0}to{background-position:200% 0}}
+@supports (animation-timeline:scroll()){body::before{content:"";position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#C4113A,#FF8AA1);transform-origin:left;transform:scaleX(0);z-index:99;animation:pncProg linear both;animation-timeline:scroll(root)}}
+.hero-main{position:relative}
+.hero-main::before{content:"";position:absolute;right:6%;top:8%;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(196,17,58,.12),rgba(196,17,58,0) 70%);pointer-events:none;animation:pncGlow 9s ease-in-out infinite}
+.hero-main::after{content:"";position:absolute;left:0;bottom:0;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(26,58,120,.12),rgba(26,58,120,0) 70%);pointer-events:none;animation:pncGlow 11s ease-in-out infinite reverse}
+.hero-main>div{position:relative;z-index:1}
+@media (hover:hover){
+.lift{transition:translate .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.lift:hover{translate:0 -6px;box-shadow:0 22px 40px -22px rgba(10,31,68,.35);border-color:#B8C3D6}
+a[href*="calendly"][class^="btn"]{position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .25s ease}
+a[href*="calendly"][class^="btn"]:hover{transform:translateY(-3px);box-shadow:0 14px 28px -12px rgba(196,17,58,.65)}
+a[href*="calendly"][class^="btn"]::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);background-size:200% 100%;background-position:-200% 0;pointer-events:none}
+a[href*="calendly"][class^="btn"]:hover::after{animation:pncShine .9s ease}
+section img{transition:transform .4s ease}
+section img[alt*="Asad"]:hover{transform:scale(1.06) rotate(-2deg)}
+.sw img:hover,.rv-track img:hover,.logo-track img:hover{transform:scale(1.08)}
+}
+@media (min-width:861px) and (prefers-reduced-motion:no-preference){
+.hero-svg.fun{transition:transform .5s ease}
+.hero-svg:hover{transform:scale(1.03)}
+}
+
+/* ---- polish ---- */
+:root{interpolate-size:allow-keywords}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #2E4FE0;outline-offset:2px}
+details::details-content{block-size:0;overflow:clip;transition:block-size .32s ease,content-visibility .32s allow-discrete}
+details[open]::details-content{block-size:auto}
+
+.rv-track,.sw{cursor:grab}
+
+/* Traffic hero illustration (moved here from the style block that was inside the SVG) */
+@keyframes pncfl{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.pf1{animation:pncfl 4.2s ease-in-out infinite}
+.pf2{animation:pncfl 5s ease-in-out -1.6s infinite}
+.pf3{animation:pncfl 4.6s ease-in-out -3s infinite}
+@media (prefers-reduced-motion:reduce){.pf1,.pf2,.pf3{animation:none}}
+
+/* ---------- 2. Base, layout & components (moved from inline styles) ---------- */
+*,*::before,*::after{box-sizing:border-box}
+img{max-width:100%}
+.page{width:100%;font-family:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;color:#0B1B33;background:#ffffff;line-height:1.5;overflow-x:clip}
+.container{width:100%;max-width:1280px;margin-left:auto;margin-right:auto;padding-left:clamp(20px,5vw,64px);padding-right:clamp(20px,5vw,64px)}
+.stack{display:flex;flex-direction:column}
+.bg-white{background:#ffffff}
+.bg-soft{background:#EEF1F6}
+.bg-navy{background:#0A1F44}
+.bg-red{background:#C4113A}
+.bg-footer{background:#06142E}
+
+/* section spacing */
+.sec-a{padding-top:clamp(26px,min(5.5vw,6.5vh),72px);padding-bottom:clamp(26px,min(5.5vw,6.5vh),72px);gap:clamp(16px,3.2vh,30px)}
+.sec-b{padding-top:clamp(24px,min(5vw,5.5vh),60px);padding-bottom:clamp(24px,min(5vw,5.5vh),60px);gap:clamp(16px,min(3vw,3.2vh),32px)}
+.sec-proof{gap:clamp(16px,min(3.2vw,3.4vh),40px)}
+.sec-who{gap:clamp(16px,2.8vh,26px)}
+
+/* headings & text */
+.sec-head{display:flex;flex-direction:column;gap:clamp(8px,1.6vh,16px)}
+.sec-head--16{gap:16px}
+.eyebrow{font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#C4113A}
+.eyebrow--muted{color:#4B5565}
+.eyebrow--pink{color:#FF8AA1}
+.h1{margin:0;font-family:'Poppins',system-ui,sans-serif;font-weight:700;font-size:clamp(30px,min(5.4vw,8.2vh),72px);line-height:1.05;color:#0A1F44;text-wrap:balance}
+.h2{margin:0;max-width:1000px;font-family:'Poppins',system-ui,sans-serif;font-weight:700;font-size:clamp(24px,min(3.6vw,5.6vh),46px);line-height:1.12;color:#0A1F44;text-wrap:balance}
+.h2--md{font-size:clamp(23px,min(3.2vw,5vh),40px);line-height:1.15}
+.h2--light{color:#ffffff}
+.text-red{color:#C4113A}
+.text-pink{color:#FF8AA1}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;border-radius:6px;text-decoration:none;font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;line-height:1.2;text-align:center;cursor:pointer}
+.btn-red{background:#C4113A;color:#ffffff}
+.btn-white{background:#ffffff;color:#0A1F44}
+.btn-outline{flex:none;background:transparent;color:#0A1F44;border:2px solid #0A1F44}
+.btn-outline:hover{background:#0A1F44!important;color:#ffffff}
+.btn--sm{min-height:46px;padding:0 22px;font-size:15px}
+.btn--hero{min-height:clamp(46px,6.5vh,54px);padding:0 30px}
+.btn--15{font-size:15px}
+.btn--lg{min-height:56px;padding:0 32px}
+.btn[disabled]{opacity:.7;cursor:progress}
+.btn svg{flex:none}
+.btn-icon{gap:10px}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn-note{font-size:15px;color:#C9D3E8}
+
+/* header */
+.topbar{position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid #DCE2EC}
+.rainbow{display:flex;height:6px}
+.rainbow span{flex:1}
+.rainbow span:nth-child(1){background:#E4002B}
+.rainbow span:nth-child(2){background:#8E44AD}
+.rainbow span:nth-child(3){background:#2E4FE0}
+.rainbow span:nth-child(4){background:#00857A}
+.rainbow span:nth-child(5){background:#1E8A3B}
+.rainbow span:nth-child(6){background:#F2B705}
+.rainbow span:nth-child(7){background:#F26D21}
+.hdr{width:100%;max-width:1280px;margin:0 auto;padding:8px clamp(20px,5vw,64px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px}
+.logo-link{display:inline-flex;align-items:center;text-decoration:none;padding:6px 0}
+.logo-h{display:block;height:40px;width:auto;max-width:100%}
+.logo-static{display:none;height:36px}
+
+/* hero */
+.hero{overflow:hidden}
+.hero-main{width:100%;max-width:1280px;margin:0 auto;padding:clamp(14px,3vh,56px) clamp(20px,5vw,64px) clamp(18px,3vh,48px);display:flex;flex-wrap:wrap;align-items:center;gap:clamp(20px,4vh,48px) 56px}
+.hero-copy{flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:clamp(12px,2.4vh,28px)}
+.hero-lead{margin:0;max-width:540px;font-size:clamp(16px,min(1.6vw,2.6vh),20px);line-height:1.55;color:#3A4558}
+.hero-note{display:flex;align-items:center;gap:12px;font-size:15px;color:#3A4558}
+.hero-visual{flex:1 1 340px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:14px}
+.hero-svg{width:100%;max-width:400px;height:auto;display:block}
+.hero-pill{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:#0A1F44;color:#ffffff;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:600;font-size:15px}
+
+/* grids */
+.grid{display:grid;gap:20px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid--16{gap:16px}
+
+/* problem */
+.problem-card{background:#F4F6FA;border:1px solid #DCE2EC;border-radius:8px;padding:26px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.icon-box{width:48px;height:48px;border-radius:8px;background:#0A1F44;display:flex;align-items:center;justify-content:center}
+.problem-card h3{margin:0;font-family:'Poppins',sans-serif;font-weight:600;font-size:22px;line-height:1.25;color:#0A1F44}
+.problem-card p{margin:0;font-size:17px;line-height:1.55;color:#4B5565}
+.inline-cta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px}
+.inline-cta p{margin:0;font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(19px,2vw,24px);color:#0A1F44}
+.inline-cta--who{gap:16px 24px}
+.inline-cta--who p{font-size:clamp(18px,2vw,22px)}
+.qlink{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;color:#C4113A;text-decoration:underline;text-underline-offset:3px}
+
+/* results */
+.result-card{min-width:0;background:#ffffff;border:1px solid #DCE2EC;border-top:3px solid #0A1F44;border-radius:12px;padding:clamp(16px,2.4vh,24px);display:flex;flex-direction:column;gap:6px}
+.result-card--accent{border-top-color:#C4113A}
+.result-label{font-size:13.5px;color:#4B5565}
+.result-num{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(34px,min(4vw,6.5vh),52px);line-height:1;color:#0A1F44}
+.result-card--accent .result-num{color:#C4113A}
+.result-title{font-family:'Poppins',sans-serif;font-weight:600;font-size:17px;line-height:1.3;color:#0A1F44}
+.result-sub{font-size:14.5px;color:#4B5565}
+.cta-band{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;background:#0A1F44;border-radius:10px;padding:clamp(16px,min(3vw,3.4vh),32px)}
+.cta-band p{margin:0;flex:1 1 280px;min-width:0;font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(18px,2vw,24px);line-height:1.3;color:#ffffff}
+.disclaimer{margin:0;font-size:14px;line-height:1.5;color:#5B6678}
+
+/* how we work */
+.how-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:8px;padding:clamp(16px,2.6vh,26px);display:flex;flex-direction:column;gap:clamp(10px,1.6vh,16px);min-width:0}
+.how-card-head{display:flex;align-items:center;gap:14px}
+.how-num{flex:none;width:40px;height:40px;border-radius:50%;border:2px solid #FF8AA1;color:#ffffff;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:600;font-size:17px}
+.how-card h3{margin:0;font-family:'Poppins',sans-serif;font-weight:600;font-size:24px;color:#ffffff}
+.how-icon{flex:none;margin-left:auto;max-width:40%;height:auto}
+.how-card p{margin:0;font-size:17px;line-height:1.55;color:#C3CDE0}
+
+/* services */
+.service-card{background:#ffffff;border:1px solid #DCE2EC;border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.service-card h3{margin:0;font-family:'Poppins',sans-serif;font-weight:600;font-size:19px;line-height:1.3;color:#0A1F44}
+.service-card p{margin:0;font-size:16px;line-height:1.55;color:#4B5565}
+.note-band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;background:#ffffff;border:1px solid #DCE2EC;border-radius:8px;padding:24px 28px}
+.note-band p{margin:0;flex:1 1 320px;min-width:0;font-family:'Poppins',sans-serif;font-weight:500;font-size:18px;line-height:1.4;color:#0A1F44}
+
+/* who it's for */
+.who-card{position:relative;overflow:hidden;background:#F4F6FA;border:1px solid #DCE2EC;border-top:6px solid #C4113A;border-radius:10px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:18px;min-width:0}
+.who-card--blue{border-top-color:#2E4FE0}
+.who-card--white{background:#ffffff}
+.who-num{position:absolute;right:20px;top:4px;font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(72px,9vw,112px);line-height:1;color:#E3E8F2}
+.who-card--white .who-num{color:#E8ECF4}
+.who-icon{position:relative;width:56px;height:56px;border-radius:12px;background:#C4113A;display:flex;align-items:center;justify-content:center}
+.who-card--blue .who-icon{background:#2E4FE0}
+.who-card h3{position:relative;margin:0;font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(22px,2.4vw,28px);line-height:1.2;color:#0A1F44;text-wrap:balance}
+.who-card p{position:relative;margin:0;font-size:18px;line-height:1.55;color:#3A4558}
+
+/* hover lift keeps the coloured top borders */
+@media (hover:hover){
+.result-card.lift:hover{border-top-color:#0A1F44}
+.result-card--accent.lift:hover,.who-card.lift:hover{border-top-color:#C4113A}
+.who-card--blue.lift:hover{border-top-color:#2E4FE0}
+}
+
+/* trust stats */
+.stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 24px;border-top:2px solid #0A1F44;padding-top:20px}
+.stat{display:flex;flex-direction:column;gap:2px;min-width:0}
+.stat-num{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,42px);line-height:1.05;color:#0A1F44}
+.stat-label{font-size:15px;color:#3A4558}
+
+/* meet Asad */
+.asad-card{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(18px,3vw,36px);background:#F4F6FA;border:1px solid #DCE2EC;border-radius:16px;padding:clamp(16px,2.6vw,28px) clamp(16px,3vw,36px)}
+.asad-photo{flex:none;display:block;width:clamp(120px,14vw,170px);height:auto;aspect-ratio:1/1;object-fit:cover;object-position:top;border-radius:50%}
+.asad-body{flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.asad-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(22px,2.4vw,28px);line-height:1.2;color:#0A1F44}
+.asad-role{margin-top:2px;font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:#C4113A}
+.asad-text{margin:0;max-width:620px;font-size:clamp(16px,1.3vw,17px);line-height:1.55;color:#3A4558}
+.asad-quote{margin:2px 0 0;border-left:3px solid #C4113A;padding:2px 0 2px 14px;max-width:640px}
+.asad-quote .stars{margin-bottom:4px}
+.asad-quote-text{display:block;font-size:15.5px;line-height:1.55;color:#2B3648}
+.asad-quote-by{display:block;margin-top:4px;font-size:13px;color:#4B5565}
+.stars{display:flex;gap:2px}
+
+/* FAQ */
+.faq-wrap{display:flex;flex-wrap:wrap;gap:24px 56px;align-items:flex-start;padding-top:clamp(26px,min(5.5vw,6.5vh),72px);padding-bottom:clamp(26px,min(5.5vw,6.5vh),72px)}
+.faq-intro{flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:clamp(8px,1.6vh,16px)}
+.faq-art{margin-top:8px}
+.faq-art svg{max-width:100%;height:auto;display:block}
+.faq-list{flex:2 1 520px;min-width:0;display:flex;flex-direction:column}
+details.faq{border-top:1px solid #DCE2EC}
+details.faq:last-child{border-bottom:1px solid #DCE2EC}
+details.faq>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;min-height:48px}
+details.faq h3{margin:0;font-family:'Poppins',sans-serif;font-weight:600;font-size:19px;line-height:1.35;color:#0A1F44}
+details.faq .faq-ic{flex:none}
+details.faq p{margin:0;padding:0 40px 24px 0;font-size:17px;line-height:1.6;color:#4B5565}
+
+/* sticky mobile CTA */
+.sticky-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;background:#ffffff;border-top:1px solid #DCE2EC;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+.sticky-cta .btn{display:flex;width:100%;min-height:50px}
+
+/* ---------- 3. New components ---------- */
+
+/* Client reviews: 3 cards visible, moves one card per step, arrows in the top corner */
+.rv-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 32px}
+.rv-head .sec-head{flex:1 1 440px;min-width:0}
+.rv-aside{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-left:auto}
+.rv-rating{display:flex;align-items:center;gap:12px}
+.rv-score{font-family:'Poppins',sans-serif;font-weight:700;font-size:36px;line-height:1;color:#0A1F44}
+.rv-rating-meta{display:flex;flex-direction:column;gap:3px}
+.rv-count{font-size:14px;color:#4B5565}
+.slider-nav{display:flex;gap:10px;margin-left:auto}
+.slider-btn{width:44px;height:44px;padding:0;border-radius:50%;border:1px solid #DCE2EC;background:#ffffff;color:#0A1F44;box-shadow:0 2px 8px rgba(10,31,68,.15);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.slider-btn:hover{background:#F4F6FA;border-color:#0A1F44}
+.slider-viewport{overflow:hidden;touch-action:pan-y}
+.slider-track{--per-view:3;--gap:16px;display:flex;align-items:stretch;gap:var(--gap)}
+.slider-track.has-open{align-items:flex-start}
+.review{flex:0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));min-width:0;margin:0;background:#F4F6FA;border:1px solid #DCE2EC;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.review-head{display:flex;align-items:center;gap:12px}
+.review-avatar{flex:none;width:40px;height:40px;border-radius:50%;background:#0A1F44;color:#ffffff;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:600;font-size:18px}
+.review-who{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.review-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;color:#0A1F44}
+.review-sub{font-size:13px;color:#4B5565}
+.review-g{flex:none}
+.review-text{margin:0;font-size:16px;line-height:1.6;color:#2B3648}
+.review.is-long:not(.is-open) .review-text{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;line-clamp:4;overflow:hidden}
+.rv-more{align-self:flex-start;background:none;border:0;padding:2px 0 6px;font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:#C4113A;cursor:pointer;text-decoration:underline}
+
+/* Why PNC Logos: "Recognized by" | "Certified partner of" in one row, 3 logos each, moving one at a time */
+.badges{background:#ffffff;border:1px solid #DCE2EC;border-radius:10px;padding:18px 28px;display:flex;align-items:center;gap:24px}
+.badge-group{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:16px}
+.badge-title{flex:none;max-width:90px;margin:0;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:.04em;line-height:1.3;color:#4B5565}
+.badge-divider{flex:none;align-self:stretch;width:1px;background:#DCE2EC}
+.logo-carousel{flex:1 1 auto;min-width:0;overflow:hidden}
+.logo-track{--per-view:3;--gap:16px;display:flex;gap:var(--gap)}
+.logo-slide{flex:0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));min-width:0;height:88px;display:flex;align-items:center;justify-content:center}
+.logo-slide img{display:block;width:auto;height:auto;max-width:100%;max-height:80px;object-fit:contain;-webkit-user-drag:none;user-select:none}
+.logo-track--partners .logo-slide img{max-height:38px}
+
+/* 30-second quiz: details form, 5 questions, submit, result */
+.quiz-wrap{align-items:center;gap:clamp(14px,2.6vh,24px)}
+.quiz-head{max-width:640px;text-align:center;display:flex;flex-direction:column;gap:clamp(8px,1.4vh,12px)}
+.quiz-head .h2{max-width:none;font-size:clamp(23px,min(3.2vw,5vh),38px);line-height:1.15}
+.quiz-head p{margin:0;font-size:17px;line-height:1.5;color:#3A4558}
+.quiz{position:relative;width:100%;max-width:760px;background:#ffffff;border:1px solid #DCE2EC;border-radius:14px;padding:clamp(16px,2.6vw,28px);display:flex;flex-direction:column;gap:18px}
+.quiz-meta{display:flex;flex-direction:column;gap:10px}
+.quiz-steplabel{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#4B5565}
+.quiz-steplabel strong{font-weight:600;color:#C4113A}
+.quiz-progress{display:flex;gap:6px}
+.quiz-progress span{flex:1;height:6px;border-radius:3px;background:#E3E8F1;transition:background-color .3s ease}
+.quiz-progress span.is-done{background:#C4113A}
+.quiz-step{display:flex;flex-direction:column;gap:14px}
+.quiz-q{font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(18px,2vw,22px);line-height:1.3;color:#0A1F44}
+.quiz-q:focus{outline:none}
+.quiz-hint{margin:0;font-size:15.5px;line-height:1.5;color:#4B5565}
+.quiz-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:10px}
+.qopt{text-align:left;min-height:52px;padding:12px 16px;background:#ffffff;border:1.5px solid #B9C3D6;border-radius:8px;font-family:'Poppins',sans-serif;font-weight:500;font-size:15px;line-height:1.35;color:#0A1F44;cursor:pointer}
+.qopt[aria-pressed="true"]{border-color:#C4113A;background:#FFF4F6}
+.quiz-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:#0A1F44}
+.field .req{color:#C4113A}
+.field .opt{font-family:'Figtree',system-ui,sans-serif;font-weight:500;color:#6B7690}
+.field input{width:100%;min-height:50px;padding:12px 14px;background:#ffffff;border:1.5px solid #B9C3D6;border-radius:8px;font-family:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;color:#0B1B33}
+.field input::placeholder{color:#8A94A6}
+.field input:hover{border-color:#8A9BBD}
+.field input:focus{border-color:#0A1F44}
+.field.is-invalid input{border-color:#C4113A;background:#FFF8F9}
+.field-error{margin:0;font-size:13.5px;line-height:1.4;color:#C4113A}
+.hp-field{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.quiz-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px}
+.quiz-actions--split{justify-content:space-between}
+.quiz-note{font-size:14px;line-height:1.45;color:#4B5565}
+.qback,.qreset,.qedit{background:none;border:0;padding:12px 4px;font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:#4B5565;text-decoration:underline;cursor:pointer}
+.qback{display:inline-flex;align-items:center;gap:6px}
+.qback:hover,.qreset:hover,.qedit:hover{color:#0A1F44}
+.quiz-links{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px}
+.quiz-summary{margin:0;display:grid;grid-template-columns:minmax(90px,max-content) minmax(0,1fr);gap:8px 16px;background:#F4F6FA;border:1px solid #DCE2EC;border-radius:10px;padding:16px 18px;font-size:15px;line-height:1.45}
+.quiz-summary dt{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:#0A1F44}
+.quiz-summary dd{margin:0;min-width:0;color:#2B3648;overflow-wrap:anywhere}
+.quiz-alert{margin:0;padding:12px 14px;border-radius:8px;font-size:15px;line-height:1.45}
+.quiz-alert--ok{background:#ECF7EF;border:1px solid #BFE3C9;color:#1E6B34}
+.quiz-alert--err{background:#FDECEF;border:1px solid #F5C2CD;color:#A30D30}
+.quiz-result{display:flex;flex-direction:column;gap:16px}
+.gap-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.gap-label{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#4B5565}
+.gap-tags{display:flex;flex-wrap:wrap;gap:6px}
+.gap-tag{padding:6px 14px;border-radius:999px;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;background:#EEF1F6;color:#6B7690}
+.gap-tag.is-active{background:#0A1F44;color:#ffffff}
+.gap-head{display:flex;align-items:center;gap:16px}
+.gap-icon{flex:none;width:60px;height:60px;border-radius:14px;background:#0A1F44;display:flex;align-items:center;justify-content:center}
+.gap-text{display:flex;flex-direction:column;gap:4px;min-width:0}
+.gap-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(20px,2.3vw,26px);line-height:1.2;color:#0A1F44}
+.gap-desc{font-size:16px;line-height:1.45;color:#3A4558}
+.check-box{background:#F4F6FA;border:1px solid #DCE2EC;border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.check-box-title{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:#0A1F44}
+.check-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.check-list li{display:flex;gap:10px;font-size:15.5px;line-height:1.45;color:#2B3648}
+.check-list svg{flex:none;margin-top:2px}
+
+/* Final CTA: full width, everything centered */
+.cta-inner{padding-top:clamp(26px,min(5.5vw,6.5vh),64px);padding-bottom:clamp(26px,min(5.5vw,6.5vh),64px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(14px,3vh,32px)}
+.cta-title{width:100%;margin:0;font-family:'Poppins',system-ui,sans-serif;font-weight:700;font-size:clamp(26px,min(4.8vw,7vh),60px);line-height:1.08;color:#ffffff;text-wrap:balance}
+.cta-sub{margin:0;max-width:760px;font-size:clamp(17px,1.8vw,20px);line-height:1.5;color:#ffffff}
+.cta-inner .btn-row{width:100%;justify-content:center}
+
+/* Footer: logo and contact details centered */
+.footer-inner{padding-top:40px;padding-bottom:40px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
+.footer-brand{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0}
+.footer-logo{display:inline-flex;align-items:center;text-decoration:none;padding:8px 0}
+.footer-logo img{display:block;height:40px;width:auto;max-width:100%}
+.footer-tag{font-size:15px;color:#B4C0D6}
+.footer-contact{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0;font-size:16px;color:#E3E9F4}
+.footer-title{margin-bottom:6px;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#FF8AA1}
+.footer-contact a{display:inline-block;padding:8px 0;text-decoration:none;overflow-wrap:anywhere}
+.footer-contact a:hover{color:#FF8AA1;text-decoration:underline}
+.footer-contact a[href^="tel:"]{white-space:nowrap}
+.footer-city{padding:8px 0}
+
+/* ---------- 4. Responsive ---------- */
+@media (max-width:1023px){
+  .grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:959px){
+  .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-3>:last-child:nth-child(odd){grid-column:1/-1}
+}
+@media (max-width:1099px){
+  /* tablets: both groups stay in one row, each title sits above its 3 logos */
+  .badges{align-items:stretch;gap:20px;padding:18px 20px}
+  .badge-group{flex-direction:column;align-items:stretch;gap:10px}
+  .badge-title{max-width:none;text-align:center}
+}
+@media (max-width:899px){
+  .slider-track{--per-view:2}
+}
+@media (max-width:767px){
+  /* phones: the two logo groups stack, the divider turns horizontal */
+  .badges{flex-direction:column;gap:18px}
+  .badge-divider{width:auto;height:1px}
+}
+@media (max-width:759px){
+  .grid-2{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:719px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:599px){
+  .grid-3,.grid-4{grid-template-columns:minmax(0,1fr)}
+  .grid-3>:last-child:nth-child(odd){grid-column:auto}
+  .slider-track{--per-view:1}
+  .rv-aside{width:100%;justify-content:space-between}
+  .quiz-fields{grid-template-columns:minmax(0,1fr)}
+  .logo-track{--gap:12px}
+  .hero-main::before{width:300px;height:300px}
+  .hero-main::after{width:240px;height:240px}
+}
+@media (max-width:520px){
+  .problem-card,.service-card{padding:22px}
+  .note-band{padding:20px}
+  .note-band .btn,.cta-band .btn,.inline-cta--who .btn,.asad-card .btn{flex:1 1 100%}
+  .quiz-actions .btn{flex:1 1 100%}
+  .quiz-summary{grid-template-columns:minmax(0,1fr);gap:2px}
+  .quiz-summary dd{margin-bottom:8px}
+  details.faq p{padding-right:8px}
+  .rv-score{font-size:32px}
+}
+@media (max-width:359px){
+  .how-icon{display:none}
+  .gap-head{align-items:flex-start}
+  .gap-icon{width:48px;height:48px}
+}
+</style>
+</head>
+<body>
+<div class="page" id="top">
+
+<!-- ============ HEADER ============ -->
+<div class="topbar">
+  <div class="rainbow" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <header class="hdr">
+    <a class="logo-link" href="#top" aria-label="PNC Logos home"><img class="logo-h logo-anim" src="assets/images/logos/01-pnc-logos.gif" alt="PNC Logos" width="218" height="40"><img class="logo-h logo-static" src="assets/images/logos/13-pnc-logos.png" alt="" aria-hidden="true" width="213" height="36" loading="lazy"></a>
+    <a class="btn btn-red btn--sm hdr-btn" href="https://calendly.com/fancy-pnclogos/1-1-alignable-meet" target="_blank" rel="noopener">Book My Free Audit Call</a>
+  </header>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero bg-soft">
+  <div class="hero-main">
+    <div class="hero-copy">
+      <div class="eyebrow eyebrow--muted">Ecommerce growth · Orlando, FL</div>
+      <h1 class="h1">Turn browsers into <span class="text-red">paying customers.</span></h1>
+      <p class="hero-lead">Book a free audit call. We'll go through your store, Google and Meta ads and checkout live, and show you where sales are slipping away and how to win them back.</p>
+      <div class="btn-row">
+        <a class="btn btn-red btn--hero" href="https://calendly.com/fancy-pnclogos/1-1-alignable-meet" target="_blank" rel="noopener">Book My Free Audit Call</a>
+      </div>
+      <div class="hero-note"><span>5-star rated on Google, 230+ reviews. Based in Orlando, FL.</span></div>
+    </div>
+    <div class="hero-visual">
+      <div class="eyebrow eyebrow--muted">Where sales slip away</div>
+      <svg aria-hidden="true" class="hero-svg fun" viewBox="0 0 360 376">
+        <circle cx="110" cy="14" fill="#7D8FB3" r="6"></circle><circle cx="150" cy="22" fill="#A9B6D0" r="6"></circle><circle cx="190" cy="12" fill="#7D8FB3" r="6"></circle><circle cx="230" cy="22" fill="#A9B6D0" r="6"></circle><circle cx="260" cy="12" fill="#7D8FB3" r="6"></circle>
+        <rect fill="#0A1F44" height="62" rx="10" width="312" x="24" y="42"></rect>
+        <text fill="#ffffff" font-family="Poppins,sans-serif" font-size="16" font-weight="600" text-anchor="middle" x="180" y="79">Visit your store</text>
+        <path d="M170 112 L190 112 L180 130 Z" fill="#9AA6BA"></path>
+        <rect fill="#1A3A78" height="62" rx="10" width="232" x="64" y="138"></rect>
+        <text fill="#ffffff" font-family="Poppins,sans-serif" font-size="16" font-weight="600" text-anchor="middle" x="180" y="175">Add to cart</text>
+        <path d="M170 208 L190 208 L180 226 Z" fill="#9AA6BA"></path>
+        <rect fill="#15753A" height="62" rx="10" width="132" x="114" y="234"></rect>
+        <text fill="#ffffff" font-family="Poppins,sans-serif" font-size="16" font-weight="600" text-anchor="middle" x="180" y="271">Purchase</text>
+        <path d="M170 304 L190 304 L180 318 Z" fill="#15753A"></path>
+        <g opacity="1"><circle cx="36" cy="128" fill="#FBE9ED" r="13" stroke="#E7A6B5" stroke-width="2"></circle><text fill="#C4113A" font-family="Poppins,sans-serif" font-size="14.3" font-weight="700" text-anchor="middle" x="36" y="133.1">$</text></g><g opacity="1"><circle cx="324" cy="128" fill="#FBE9ED" r="13" stroke="#E7A6B5" stroke-width="2"></circle><text fill="#C4113A" font-family="Poppins,sans-serif" font-size="14.3" font-weight="700" text-anchor="middle" x="324" y="133.1">$</text></g><g opacity="0.85"><circle cx="44" cy="214" fill="#FBE9ED" r="10" stroke="#E7A6B5" stroke-width="2"></circle><text fill="#C4113A" font-family="Poppins,sans-serif" font-size="11.0" font-weight="700" text-anchor="middle" x="44" y="218.0">$</text></g><g opacity="0.85"><circle cx="318" cy="214" fill="#FBE9ED" r="10" stroke="#E7A6B5" stroke-width="2"></circle><text fill="#C4113A" font-family="Poppins,sans-serif" font-size="11.0" font-weight="700" text-anchor="middle" x="318" y="218.0">$</text></g><g opacity="0.6"><circle cx="70" cy="246" fill="#FBE9ED" r="8" stroke="#E7A6B5" stroke-width="2"></circle><text fill="#C4113A" font-family="Poppins,sans-serif" font-size="8.8" font-weight="700" text-anchor="middle" x="70" y="249.2">$</text></g><g opacity="0.6"><circle cx="292" cy="250" fill="#FBE9ED" r="8" stroke="#E7A6B5" stroke-width="2"></circle><text fill="#C4113A" font-family="Poppins,sans-serif" font-size="8.8" font-weight="700" text-anchor="middle" x="292" y="253.2">$</text></g>
+        <g opacity="1"><circle cx="130" cy="334" fill="#F2B705" r="13" stroke="#C99700" stroke-width="2"></circle><text fill="#7A5A00" font-family="Poppins,sans-serif" font-size="14.3" font-weight="700" text-anchor="middle" x="130" y="339.1">$</text></g><g opacity="1"><circle cx="180" cy="346" fill="#F2B705" r="17" stroke="#C99700" stroke-width="2"></circle><text fill="#7A5A00" font-family="Poppins,sans-serif" font-size="18.700000000000003" font-weight="700" text-anchor="middle" x="180" y="352.7">$</text></g><g opacity="1"><circle cx="230" cy="334" fill="#F2B705" r="13" stroke="#C99700" stroke-width="2"></circle><text fill="#7A5A00" font-family="Poppins,sans-serif" font-size="14.3" font-weight="700" text-anchor="middle" x="230" y="339.1">$</text></g>
+      </svg>
+      <div class="hero-pill">
+        <svg aria-hidden="true" fill="none" height="16" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24" width="16"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+        Orders you can count
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section id="problem" class="bg-white">
+  <div class="container stack sec-a">
+    <div class="sec-head">
+      <div class="eyebrow">The problem</div>
+      <h2 class="h2">Traffic is not the same as sales.</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="problem-card lift">
+        <div class="icon-box"><svg aria-hidden="true" fill="none" height="26" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="26"><path d="M4 5h16l-6 8v5l-4 2v-7z"></path><path d="M19 15.5c.8 1 1.2 1.7 1.2 2.3a1.2 1.2 0 0 1-2.4 0c0-.6.4-1.3 1.2-2.3z"></path></svg></div>
+        <h3>Abandoned carts</h3>
+        <p>Shoppers add products, then leave before they pay.</p>
+      </div>
+      <div class="problem-card lift">
+        <div class="icon-box"><svg aria-hidden="true" fill="none" height="26" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="26"><circle cx="12" cy="12" r="9"></circle><path d="M9.6 9.4a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1.1.9-1.1 1.7"></path><circle cx="12" cy="17" fill="#ffffff" r=".6"></circle></svg></div>
+        <h3>Product pages that don't sell</h3>
+        <p>Photos, copy and trust signals that leave buyer doubts unanswered.</p>
+      </div>
+      <div class="problem-card lift">
+        <div class="icon-box"><svg aria-hidden="true" fill="none" height="26" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="26"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle><path d="M4 4l16 16"></path></svg></div>
+        <h3>Ad spend without clear returns</h3>
+        <p>You pay for clicks, but can't say which ads produce orders.</p>
+      </div>
+    </div>
+    <div class="inline-cta">
+      <p>We start by finding which one it is.</p>
+      <a class="qlink" href="#quiz">Take the 30-second quiz →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF ============ -->
+<section id="proof" class="bg-soft">
+  <div class="container stack sec-a sec-proof">
+    <div class="sec-head">
+      <div class="eyebrow">Results</div>
+      <h2 class="h2">What helping an online store looks like.</h2>
+    </div>
+    <div class="grid grid-4 grid--16">
+      <div class="result-card result-card--accent lift">
+        <div class="result-label">Online clothing and patch store</div>
+        <div class="result-num">$30K</div>
+        <div class="result-title">in sales from Google searches</div>
+        <div class="result-sub">277 orders in six months</div>
+      </div>
+      <div class="result-card lift">
+        <div class="result-label">Real estate developer</div>
+        <div class="result-num">3,909</div>
+        <div class="result-title">people asked for details</div>
+        <div class="result-sub">From one Facebook campaign</div>
+      </div>
+      <div class="result-card lift">
+        <div class="result-label">Equipment distributor</div>
+        <div class="result-num">−70%</div>
+        <div class="result-title">cost of each new lead</div>
+        <div class="result-sub">$15 down to $4.55</div>
+      </div>
+      <div class="result-card lift">
+        <div class="result-label">Home care company</div>
+        <div class="result-num">−21%</div>
+        <div class="result-title">cost of each lead</div>
+        <div class="result-sub">$33 down to $26</div>
+      </div>
+    </div>
+    <div class="cta-band">
+      <p>Want results like these? Start with the free audit.</p>
+      <a class="btn-white btn btn--15" href="https://calendly.com/fancy-pnclogos/1-1-alignable-meet" target="_blank" rel="noopener">Book My Free Audit Call</a>
+    </div>
+    <p class="disclaimer">Results from individual client campaigns. Your results will vary with your market, budget and service.</p>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" class="bg-white">
+  <div class="container stack sec-b">
+    <div class="rv-head">
+      <div class="sec-head">
+        <div class="eyebrow">Client reviews</div>
+        <h2 class="h2 h2--md">What clients say about working with us.</h2>
+      </div>
+      <div class="rv-aside">
+        <div class="rv-rating"><span class="rv-score">5.0</span><span class="rv-rating-meta"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg></span><span class="rv-count">230+ Google reviews</span></span></div>
+        <div class="slider-nav">
+          <button type="button" class="slider-btn" data-rv-prev aria-controls="rvTrack" aria-label="Previous review"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button>
+          <button type="button" class="slider-btn" data-rv-next aria-controls="rvTrack" aria-label="Next review"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="slider" id="rvSlider" role="region" aria-roledescription="carousel" aria-label="Client reviews">
+      <div class="slider-viewport" data-viewport>
+        <div class="slider-track rv-track" id="rvTrack" data-track aria-live="polite">
+      <figure class="review is-long" role="group" aria-roledescription="slide" aria-label="1 of 7">
+        <figcaption class="review-head"><span class="review-avatar" aria-hidden="true">G</span><span class="review-who"><span class="review-name">Client</span><span class="review-sub">Google and social media campaigns</span></span><svg class="review-g" width="18" height="18" viewBox="0 0 48 48" aria-label="Google" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path></svg></figcaption>
+        <div class="stars" role="img" aria-label="5 out of 5 stars"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg></div>
+        <blockquote class="review-text">“Fancy &amp; his team has been phenomenal in managing the marketing campaign both via Google and social media. The results have been strong … improved search visibility, better keyword rankings, and consistent reporting. The level of professionalism, responsiveness, transparency and knowledge is unmeasurable.”</blockquote>
+        <button type="button" class="rv-more" aria-expanded="false">See more</button>
+      </figure>
+      <figure class="review is-long" role="group" aria-roledescription="slide" aria-label="2 of 7">
+        <figcaption class="review-head"><span class="review-avatar" aria-hidden="true">B</span><span class="review-who"><span class="review-name">Bruce A.</span><span class="review-sub">Google review</span></span><svg class="review-g" width="18" height="18" viewBox="0 0 48 48" aria-label="Google" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path></svg></figcaption>
+        <div class="stars" role="img" aria-label="5 out of 5 stars"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg></div>
+        <blockquote class="review-text">“What I love most about PNC Logos is how they prioritize your needs and deliver tailored solutions to elevate your brand's online presence and reputation, ultimately building customer trust and success.”</blockquote>
+        <button type="button" class="rv-more" aria-expanded="false">See more</button>
+      </figure>
+      <figure class="review is-long" role="group" aria-roledescription="slide" aria-label="3 of 7">
+        <figcaption class="review-head"><span class="review-avatar" aria-hidden="true">J</span><span class="review-who"><span class="review-name">Jacob W.</span><span class="review-sub">Google review</span></span><svg class="review-g" width="18" height="18" viewBox="0 0 48 48" aria-label="Google" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path></svg></figcaption>
+        <div class="stars" role="img" aria-label="5 out of 5 stars"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg></div>
+        <blockquote class="review-text">“I have used PNC for both of my businesses. They always do a fantastic job. Communication is a big plus and they have never not gotten in touch with me and Asad is great to work with. You can't go wrong with PNC!”</blockquote>
+        <button type="button" class="rv-more" aria-expanded="false">See more</button>
+      </figure>
+      <figure class="review is-long" role="group" aria-roledescription="slide" aria-label="4 of 7">
+        <figcaption class="review-head"><span class="review-avatar" aria-hidden="true">J</span><span class="review-who"><span class="review-name">Jamilya A.</span><span class="review-sub">Google review</span></span><svg class="review-g" width="18" height="18" viewBox="0 0 48 48" aria-label="Google" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path></svg></figcaption>
+        <div class="stars" role="img" aria-label="5 out of 5 stars"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg></div>
+        <blockquote class="review-text">“I had a very productive meeting with Asad and greatly appreciate the knowledge and guidance he shared. Thanks to his advice, I successfully converted my Google profile to a business profile and received the …”</blockquote>
+        <button type="button" class="rv-more" aria-expanded="false">See more</button>
+      </figure>
+      <figure class="review is-long" role="group" aria-roledescription="slide" aria-label="5 of 7">
+        <figcaption class="review-head"><span class="review-avatar" aria-hidden="true">P</span><span class="review-who"><span class="review-name">Patti W.</span><span class="review-sub">Google review</span></span><svg class="review-g" width="18" height="18" viewBox="0 0 48 48" aria-label="Google" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path></svg></figcaption>
+        <div class="stars" role="img" aria-label="5 out of 5 stars"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg></div>
+        <blockquote class="review-text">“They did an amazing job updating our website and brochure. The team was creative, quick to respond to feedback and delivered a great finished product.”</blockquote>
+        <button type="button" class="rv-more" aria-expanded="false">See more</button>
+      </figure>
+      <figure class="review" role="group" aria-roledescription="slide" aria-label="6 of 7">
+        <figcaption class="review-head"><span class="review-avatar" aria-hidden="true">C</span><span class="review-who"><span class="review-name">Calvin K.</span><span class="review-sub">Google review</span></span><svg class="review-g" width="18" height="18" viewBox="0 0 48 48" aria-label="Google" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path></svg></figcaption>
+        <div class="stars" role="img" aria-label="5 out of 5 stars"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg></div>
+        <blockquote class="review-text">“Asad did fantastic design work, turned things around in record timing and followed up with me extensively.”</blockquote>
+      </figure>
+      <figure class="review" role="group" aria-roledescription="slide" aria-label="7 of 7">
+        <figcaption class="review-head"><span class="review-avatar" aria-hidden="true">S</span><span class="review-who"><span class="review-name">Shari R.</span><span class="review-sub">Google review</span></span><svg class="review-g" width="18" height="18" viewBox="0 0 48 48" aria-label="Google" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path></svg></figcaption>
+        <div class="stars" role="img" aria-label="5 out of 5 stars"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg></div>
+        <blockquote class="review-text">“This group is responsive, accessible and … very competitive in pricing.”</blockquote>
+      </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW WE WORK ============ -->
+<section id="how" class="bg-navy on-dark">
+  <div class="container stack sec-a">
+    <div class="sec-head sec-head--16">
+      <div class="eyebrow eyebrow--pink">How we work</div>
+      <h2 class="h2 h2--light">Fix first, <span class="text-pink">scale second.</span></h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="how-card">
+        <div class="how-card-head">
+          <div class="how-num">1</div>
+          <h3>Audit</h3>
+          <svg aria-hidden="true" class="how-icon" fill="none" height="50" stroke="#C3CDE0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 84 56" width="76"><rect height="44" rx="4" width="34" x="8" y="6"></rect><path d="M15 18h20M15 26h20M15 34h12"></path><circle cx="55" cy="30" r="11" stroke="#FF8AA1"></circle><path d="M63 38l11 11" stroke="#FF8AA1"></path></svg>
+        </div>
+        <p>We review your store, product pages, checkout, ads and tracking, then give you a clear list of what's costing you sales.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-card-head">
+          <div class="how-num">2</div>
+          <h3>Fix</h3>
+          <svg aria-hidden="true" class="how-icon" fill="none" height="50" stroke="#C3CDE0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 84 56" width="76"><path d="M8 14h68M8 28h68M8 42h68"></path><circle cx="26" cy="14" fill="#0A1F44" r="5" stroke="#FF8AA1"></circle><circle cx="54" cy="28" fill="#0A1F44" r="5" stroke="#FF8AA1"></circle><circle cx="38" cy="42" fill="#0A1F44" r="5" stroke="#FF8AA1"></circle></svg>
+        </div>
+        <p>We repair the highest-impact issues first: product pages, checkout friction, tracking and ad setup.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-card-head">
+          <div class="how-num">3</div>
+          <h3>Grow</h3>
+          <svg aria-hidden="true" class="how-icon" fill="none" height="50" stroke="#C3CDE0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 84 56" width="76"><path d="M8 50h68"></path><path d="M16 44V34M34 44V26M52 44V18" stroke-width="7"></path><path d="M70 44V8" stroke="#FF8AA1" stroke-width="7"></path></svg>
+        </div>
+        <p>Once the store converts, we scale what works across Google and Meta ads, search and social.</p>
+      </div>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-red" href="https://calendly.com/fancy-pnclogos/1-1-alignable-meet" target="_blank" rel="noopener">Book My Free Audit Call</a>
+      <span class="btn-note">Free. No obligation.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="bg-soft">
+  <div class="container stack sec-a">
+    <div class="sec-head sec-head--16">
+      <div class="eyebrow">Services</div>
+      <h2 class="h2">One team for everything that drives leads.</h2>
+    </div>
+    <div class="grid grid-4">
+      <div class="service-card lift">
+        <svg aria-hidden="true" fill="none" height="30" stroke="#0A1F44" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="30"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l5 5"></path></svg>
+        <h3>Google Ads</h3>
+        <p>Search and Shopping campaigns that cut wasted spend.</p>
+      </div>
+      <div class="service-card lift">
+        <svg aria-hidden="true" fill="none" height="30" stroke="#0A1F44" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="30"><path d="M3 10v4a1 1 0 0 0 1 1h2l5 4V6L6 9H4a1 1 0 0 0-1 1z"></path><path d="M15.5 9a4 4 0 0 1 0 6"></path><path d="M18.5 6.5a8 8 0 0 1 0 11"></path></svg>
+        <h3>Meta Ads</h3>
+        <p>Prospecting and retargeting campaigns built around purchases, not clicks.</p>
+      </div>
+      <div class="service-card lift">
+        <svg aria-hidden="true" fill="none" height="30" stroke="#0A1F44" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="30"><path d="M3 17l6-6 4 4 8-8"></path><path d="M15 7h6v6"></path></svg>
+        <h3>SEO</h3>
+        <p>Category and product pages that rank and bring in steady buyers.</p>
+      </div>
+      <div class="service-card lift">
+        <svg aria-hidden="true" fill="none" height="30" stroke="#0A1F44" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="30"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path><path d="M9 11.5h6"></path><path d="M9 14.5h3.5"></path></svg>
+        <h3>AEO</h3>
+        <p>Product content structured so AI assistants and search answers recommend your store.</p>
+      </div>
+      <div class="service-card lift">
+        <svg aria-hidden="true" fill="none" height="30" stroke="#0A1F44" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="30"><path d="M8 7l-5 5 5 5"></path><path d="M16 7l5 5-5 5"></path><path d="M14 5l-4 14"></path></svg>
+        <h3>Web design and development</h3>
+        <p>Fast, mobile-first stores built to sell.</p>
+      </div>
+      <div class="service-card lift">
+        <svg aria-hidden="true" fill="none" height="30" stroke="#0A1F44" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="30"><path d="M5 3l14 7-6 2-2 6z"></path><path d="M13 12l5 5"></path></svg>
+        <h3>CRO and on-site optimization</h3>
+        <p>Product pages, cart and checkout tuned to lift orders.</p>
+      </div>
+      <div class="service-card lift">
+        <svg aria-hidden="true" fill="none" height="30" stroke="#0A1F44" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="30"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5"></circle></svg>
+        <h3>Branding and logo design</h3>
+        <p>A clear identity that builds trust at first glance.</p>
+      </div>
+      <div class="service-card lift">
+        <svg aria-hidden="true" fill="none" height="30" stroke="#0A1F44" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="30"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg>
+        <h3>Social media management</h3>
+        <p>Content that turns followers into customers.</p>
+      </div>
+    </div>
+    <div class="note-band lift">
+      <p>Already running campaigns? We audit what you have before we change anything.</p>
+      <a class="btn btn-red btn--15" href="https://calendly.com/fancy-pnclogos/1-1-alignable-meet" target="_blank" rel="noopener">Book My Free Audit Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO IT'S FOR ============ -->
+<section id="who" class="bg-white">
+  <div class="container stack sec-b sec-who">
+    <div class="sec-head sec-head--16">
+      <div class="eyebrow">Who it's for</div>
+      <h2 class="h2">Built for businesses that need results from their marketing.</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="who-card who-card--white lift">
+        <div class="who-num" aria-hidden="true">01</div>
+        <div class="who-icon"><svg aria-hidden="true" fill="none" height="28" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="28"><circle cx="9" cy="8" r="3.2"></circle><path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"></path><circle cx="17" cy="9" r="2.4"></circle><path d="M17 14c2.4 0 4 1.6 4 4.2"></path></svg></div>
+        <h3>Visitors, but not enough orders.</h3>
+        <p>Online stores that get traffic but not enough sales.</p>
+      </div>
+      <div class="who-card who-card--blue who-card--white lift">
+        <div class="who-num" aria-hidden="true">02</div>
+        <div class="who-icon"><svg aria-hidden="true" fill="none" height="28" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="28"><path d="M3 7l6 6 4-4 8 8"></path><path d="M15 17h6v-6"></path></svg></div>
+        <h3>Ad spend without clear returns.</h3>
+        <p>Brands paying for ads that can't say what those ads return.</p>
+      </div>
+    </div>
+    <div class="inline-cta inline-cta--who">
+      <p>Sound like you?</p>
+      <a class="btn btn-red btn--15" href="https://calendly.com/fancy-pnclogos/1-1-alignable-meet" target="_blank" rel="noopener">Book My Free Audit Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY PNC LOGOS ============ -->
+<section id="trust" class="bg-soft">
+  <div class="container stack sec-b">
+    <div class="sec-head sec-head--16">
+      <div class="eyebrow">Why PNC Logos</div>
+      <h2 class="h2 h2--md">Trusted by businesses across Orlando and the US.</h2>
+    </div>
+    <div class="grid stats">
+      <div class="stat"><div class="stat-num">10+</div><div class="stat-label">years in digital marketing</div></div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">businesses helped</div></div>
+      <div class="stat"><div class="stat-num">45+</div><div class="stat-label">industries served</div></div>
+      <div class="stat"><div class="stat-num">230+</div><div class="stat-label">Google reviews</div></div>
+    </div>
+    <div class="badges lift">
+      <div class="badge-group">
+        <h3 class="badge-title">Recognized by</h3>
+        <div class="logo-carousel" data-logo-carousel role="region" aria-roledescription="carousel" aria-label="Recognized by">
+          <div class="logo-track logo-track--awards" data-track>
+            <div class="logo-slide"><img src="assets/images/logos/03-clutch-top-digital-marketing-company-ent.png" alt="Clutch Top Digital Marketing Company, Enterprise Orlando" width="180" height="188" loading="lazy" decoding="async"></div>
+            <div class="logo-slide"><img src="assets/images/logos/04-loc8nearme-recommends-pnc-logos.png" alt="Loc8Nearme recommends PNC Logos" width="170" height="188" loading="lazy" decoding="async"></div>
+            <div class="logo-slide"><img src="assets/images/logos/05-highly-recommended-by-locals-on-alignabl.png" alt="Highly Recommended by Locals on Alignable" width="182" height="146" loading="lazy" decoding="async"></div>
+            <div class="logo-slide"><img src="assets/images/logos/06-top-seo-agencies-in-orlando-2026.png" alt="Top SEO Agencies in Orlando, 2026" width="142" height="108" loading="lazy" decoding="async"></div>
+            <div class="logo-slide"><img src="assets/images/logos/07-pandia-accredited-agency.png" alt="Pandia Accredited Agency" width="180" height="182" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
+      </div>
+      <div class="badge-divider" aria-hidden="true"></div>
+      <div class="badge-group">
+        <h3 class="badge-title">Certified partner of</h3>
+        <div class="logo-carousel" data-logo-carousel role="region" aria-roledescription="carousel" aria-label="Certified partner of">
+          <div class="logo-track logo-track--partners" data-track>
+            <div class="logo-slide"><img src="assets/images/logos/08-google-premier-partner.png" alt="Google Premier Partner" width="128" height="58" loading="lazy" decoding="async"></div>
+            <div class="logo-slide"><img src="assets/images/logos/09-microsoft-advertising-partner.png" alt="Microsoft Advertising Partner" width="140" height="58" loading="lazy" decoding="async"></div>
+            <div class="logo-slide"><img src="assets/images/logos/10-shopify-partner.png" alt="Shopify Partner" width="150" height="40" loading="lazy" decoding="async"></div>
+            <div class="logo-slide"><img src="assets/images/logos/11-yext-certified-partner.png" alt="Yext Certified Partner" width="156" height="62" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEET ASAD ============ -->
+<section id="asad" class="bg-white">
+  <div class="container sec-b">
+    <div class="asad-card lift">
+      <img class="asad-photo" src="assets/images/logos/12-asad-fancy-lead-strategist-at-pnc-logos.jpg" alt="Asad Fancy, Lead Strategist at PNC Logos" width="217" height="271" loading="lazy" decoding="async">
+      <div class="asad-body">
+        <div><div class="asad-name">Asad Fancy</div><div class="asad-role">Lead Strategist, PNC Logos</div></div>
+        <p class="asad-text">Every audit call is run by the person who signs off on the system, not passed to an account manager.</p>
+        <blockquote class="asad-quote"><span class="stars" role="img" aria-label="5 out of 5 stars"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z" fill="#F2B705"></path></svg></span><span class="asad-quote-text">“I had a very productive meeting with Asad and greatly appreciate the knowledge and guidance he shared. Thanks to his advice, I successfully converted my Google profile to a business profile and received the …”</span><span class="asad-quote-by">Jamilya A., Google review</span></blockquote>
+      </div>
+      <a class="btn btn-outline" href="https://calendly.com/fancy-pnclogos/1-1-alignable-meet" target="_blank" rel="noopener">Book My Free Audit Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 30-SECOND QUIZ ============ -->
+<section id="quiz" class="bg-soft">
+  <div class="container stack sec-b quiz-wrap">
+    <div class="quiz-head">
+      <div class="eyebrow">30-second quiz</div>
+      <h2 class="h2">Not sure what's holding you back?</h2>
+      <p>Answer 5 quick questions. We'll point to the most likely gap.</p>
+    </div>
+    <div class="quiz" id="quizBox">
+      <div class="quiz-meta">
+        <div class="quiz-steplabel" aria-live="polite"><strong data-quiz-name>Your details</strong><span data-quiz-count>Step 1 of 7</span></div>
+        <div class="quiz-progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+
+      <!-- Step 1: contact details -->
+      <form class="quiz-step" data-step="details" novalidate>
+        <div class="quiz-q" data-focus>First, where should we send your result?</div>
+        <p class="quiz-hint">Your result goes to your inbox and to our team, so we can prepare for your free audit call.</p>
+        <div class="quiz-fields">
+          <div class="field">
+            <label for="q-name">Full name <span class="req" aria-hidden="true">*</span></label>
+            <input id="q-name" name="name" type="text" autocomplete="name" maxlength="100" placeholder="Your name" required aria-describedby="q-name-err">
+            <p class="field-error" id="q-name-err" hidden></p>
+          </div>
+          <div class="field">
+            <label for="q-email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input id="q-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="150" placeholder="you@company.com" required aria-describedby="q-email-err">
+            <p class="field-error" id="q-email-err" hidden></p>
+          </div>
+          <div class="field">
+            <label for="q-phone">Phone number <span class="req" aria-hidden="true">*</span></label>
+            <input id="q-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="+1 (555) 123-4567" required aria-describedby="q-phone-err">
+            <p class="field-error" id="q-phone-err" hidden></p>
+          </div>
+          <div class="field">
+            <label for="q-website">Website URL <span class="opt">(optional)</span></label>
+            <input id="q-website" name="website" type="url" autocomplete="url" inputmode="url" maxlength="200" placeholder="yourbusiness.com" aria-describedby="q-website-err">
+            <p class="field-error" id="q-website-err" hidden></p>
+          </div>
+        </div>
+        <div class="hp-field" aria-hidden="true"><label for="q-company">Company</label><input id="q-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+        <div class="quiz-actions">
+          <button type="submit" class="btn btn-red btn-icon" data-quiz-start><span data-label>Start the quiz</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+          <span class="quiz-note">5 quick questions. No spam.</span>
+        </div>
+      </form>
+
+      <!-- Steps 2-6: questions -->
+      <div class="quiz-step" data-step="question" hidden>
+        <div class="quiz-q" data-quiz-q data-focus>1. What kind of business do you run?</div>
+        <div class="quiz-options" data-quiz-options></div>
+        <div class="quiz-actions"><button type="button" class="qback" data-quiz-back><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg><span>Back</span></button></div>
+      </div>
+
+      <!-- Step 7: submit -->
+      <div class="quiz-step" data-step="review" hidden>
+        <div class="quiz-q" data-focus>All done! Submit to see your result.</div>
+        <p class="quiz-hint">We’ll email your result to you and send a copy to the PNC Logos team.</p>
+        <dl class="quiz-summary" data-quiz-summary></dl>
+        <div class="quiz-actions quiz-actions--split">
+          <span class="quiz-links"><button type="button" class="qback" data-quiz-back><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg><span>Back</span></button><button type="button" class="qedit" data-quiz-edit>Edit details</button></span>
+          <button type="button" class="btn btn-red btn-icon" data-quiz-submit><span data-label>Submit and see my result</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+        </div>
+        <p class="quiz-alert quiz-alert--err" data-quiz-error hidden></p>
+      </div>
+
+      <!-- Result -->
+      <div class="quiz-step" data-step="result" hidden>
+        <p class="quiz-alert quiz-alert--ok" data-quiz-status data-focus role="status"></p>
+        <div class="quiz-result" data-gap="0">
+          <div class="gap-row"><span class="gap-label">Your likely gap</span><span class="gap-tags"><span class="gap-tag is-active">Visibility</span><span class="gap-tag">Leads</span><span class="gap-tag">Tracking</span></span></div>
+          <div class="gap-head"><span class="gap-icon" aria-hidden="true"><svg fill="none" height="30" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="30"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5L21 21"></path></svg></span><div class="gap-text"><div class="gap-title">Not enough people are finding you</div><div class="gap-desc">Your business may be great, but too few people see it.</div></div></div>
+          <div class="check-box"><div class="check-box-title">What we'll check on your free audit call</div><ul class="check-list"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4113A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Where you show up in Google searches</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4113A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Your local listing and reviews</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4113A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Which searches bring the right visitors</span></li></ul></div>
+        </div>
+        <div class="quiz-result" data-gap="1" hidden>
+          <div class="gap-row"><span class="gap-label">Your likely gap</span><span class="gap-tags"><span class="gap-tag">Visibility</span><span class="gap-tag is-active">Leads</span><span class="gap-tag">Tracking</span></span></div>
+          <div class="gap-head"><span class="gap-icon" aria-hidden="true"><svg fill="none" height="30" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="30"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5z"></path></svg></span><div class="gap-text"><div class="gap-title">Visitors aren't turning into leads</div><div class="gap-desc">People arrive, but they don't get in touch.</div></div></div>
+          <div class="check-box"><div class="check-box-title">What we'll check on your free audit call</div><ul class="check-list"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4113A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Where visitors drop off</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4113A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Your forms, buttons and calls to action</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4113A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Page speed and the mobile experience</span></li></ul></div>
+        </div>
+        <div class="quiz-result" data-gap="2" hidden>
+          <div class="gap-row"><span class="gap-label">Your likely gap</span><span class="gap-tags"><span class="gap-tag">Visibility</span><span class="gap-tag">Leads</span><span class="gap-tag is-active">Tracking</span></span></div>
+          <div class="gap-head"><span class="gap-icon" aria-hidden="true"><svg fill="none" height="30" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="30"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle><path d="M4 4l16 16"></path></svg></span><div class="gap-text"><div class="gap-title">You can't see what's working</div><div class="gap-desc">It's hard to know which channel brings you leads.</div></div></div>
+          <div class="check-box"><div class="check-box-title">What we'll check on your free audit call</div><ul class="check-list"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4113A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Whether calls and forms are tracked</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4113A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Which ads and channels bring leads</span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4113A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Where your ad spend is going</span></li></ul></div>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-red" href="https://calendly.com/fancy-pnclogos/1-1-alignable-meet" target="_blank" rel="noopener">Book My Free Audit Call</a>
+          <button type="button" class="btn btn-outline" data-quiz-retry hidden>Try sending again</button>
+          <button type="button" class="qreset" data-quiz-reset>Start again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="bg-white">
+  <div class="container faq-wrap">
+    <div class="faq-intro">
+      <div class="eyebrow">Questions</div>
+      <h2 class="h2">What people ask before they start.</h2>
+      <div class="faq-art hide-m" aria-hidden="true"><svg fill="none" height="140" viewBox="0 0 220 140" width="220">
+        <rect fill="#F4F6FA" height="70" rx="16" stroke="#0A1F44" stroke-width="2.5" width="120" x="6" y="6"></rect>
+        <path d="M30 76l-4 22 26-22" fill="#F4F6FA" stroke="#0A1F44" stroke-linejoin="round" stroke-width="2.5"></path>
+        <text fill="#0A1F44" font-family="Poppins,sans-serif" font-size="40" font-weight="700" text-anchor="middle" x="66" y="56">?</text>
+        <rect fill="#C4113A" height="64" rx="16" width="112" x="100" y="64"></rect>
+        <path d="M186 128l8 12 4-12" fill="#C4113A"></path>
+        <path d="M128 96l12 12 24-26" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"></path>
+      </svg></div>
+    </div>
+    <div class="faq-list">
+      <details class="faq" open>
+        <summary><h3>What does it cost?</h3><svg aria-hidden="true" class="faq-ic" fill="none" height="24" stroke="#C4113A" stroke-linecap="round" stroke-width="2.4" viewBox="0 0 24 24" width="24"><path d="M12 5v14M5 12h14"></path></svg></summary>
+        <p>The audit is free. After it, we send a clear proposal based on what we find.</p>
+      </details>
+      <details class="faq">
+        <summary><h3>How soon will I see results?</h3><svg aria-hidden="true" class="faq-ic" fill="none" height="24" stroke="#C4113A" stroke-linecap="round" stroke-width="2.4" viewBox="0 0 24 24" width="24"><path d="M12 5v14M5 12h14"></path></svg></summary>
+        <p>Timelines vary by store, budget and channel. Product page and checkout fixes tend to show up sooner than SEO.</p>
+      </details>
+      <details class="faq">
+        <summary><h3>Do I need to leave my current agency or tools?</h3><svg aria-hidden="true" class="faq-ic" fill="none" height="24" stroke="#C4113A" stroke-linecap="round" stroke-width="2.4" viewBox="0 0 24 24" width="24"><path d="M12 5v14M5 12h14"></path></svg></summary>
+        <p>No. We start with an audit of what you have.</p>
+      </details>
+      <details class="faq">
+        <summary><h3>Do you work outside Orlando?</h3><svg aria-hidden="true" class="faq-ic" fill="none" height="24" stroke="#C4113A" stroke-linecap="round" stroke-width="2.4" viewBox="0 0 24 24" width="24"><path d="M12 5v14M5 12h14"></path></svg></summary>
+        <p>Yes. We're based in Orlando, FL and work with clients across the US.</p>
+      </details>
+      <details class="faq">
+        <summary><h3>Who will I work with?</h3><svg aria-hidden="true" class="faq-ic" fill="none" height="24" stroke="#C4113A" stroke-linecap="round" stroke-width="2.4" viewBox="0 0 24 24" width="24"><path d="M12 5v14M5 12h14"></path></svg></summary>
+        <p>A dedicated account manager. You get a real person, not a ticketing system.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="cta bg-red on-dark">
+  <div class="container cta-inner">
+    <h2 class="cta-title">Find out where your store is losing sales.</h2>
+    <p class="cta-sub">The audit is free. You'll see where shoppers drop off and what to fix first.</p>
+    <div class="btn-row">
+      <a class="btn-white btn btn--lg" href="https://calendly.com/fancy-pnclogos/1-1-alignable-meet" target="_blank" rel="noopener">Book My Free Audit Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-footer on-dark">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a class="footer-logo" href="#top" aria-label="PNC Logos home"><img src="assets/images/logos/14-pnc-logos-white.png" alt="PNC Logos" width="235" height="40" loading="lazy" decoding="async"></a>
+      <div class="footer-tag">Redefining Digital Brand Solutions</div>
+    </div>
+    <div class="footer-contact">
+      <div class="footer-title">Contact</div>
+      <a href="https://www.pnclogos.com" target="_blank" rel="noopener">pnclogos.com</a>
+      <a href="mailto:solutions@pnclogos.com">solutions@pnclogos.com</a>
+      <a href="tel:+18002137640">+1 800-213-7640</a>
+      <div class="footer-city">Orlando, FL</div>
+    </div>
+  </div>
+</footer>
+<div class="sticky-cta"><a class="btn btn-red" href="https://calendly.com/fancy-pnclogos/1-1-alignable-meet" target="_blank" rel="noopener">Book My Free Audit Call</a></div>
+
+</div>
+<script>
+(function () {
+  'use strict';
+
+  /* ------------------------------------------------------------------
+     Settings
+     ------------------------------------------------------------------ */
+  var PAGE = 'Ecommerce';
+  var CAL = 'https://calendly.com/fancy-pnclogos/1-1-alignable-meet';
+  // PHP mailer that emails the quiz result to the admin AND the client (see quiz-submit.php).
+  var MAIL_ENDPOINT = 'quiz-submit.php';
+  // Optional: paste a Make / Zapier webhook URL to also receive every quiz lead there.
+  var LEAD_ENDPOINT = '';
+
+  var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+
+  /* ------------------------------------------------------------------
+     Calendly popup (loads the widget on first hover / focus / tap)
+     ------------------------------------------------------------------ */
+  function calLink(target) { return target && target.closest ? target.closest('a[href*="calendly.com"]') : null; }
+  function loadCalendly() {
+    if (document.getElementById('cal-js')) return;
+    var l = document.createElement('link');
+    l.rel = 'stylesheet';
+    l.href = 'https://assets.calendly.com/assets/external/widget.css';
+    document.head.appendChild(l);
+    var s = document.createElement('script');
+    s.id = 'cal-js';
+    s.src = 'https://assets.calendly.com/assets/external/widget.js';
+    s.async = true;
+    document.head.appendChild(s);
+  }
+  ['pointerover', 'focusin', 'touchstart'].forEach(function (type) {
+    document.addEventListener(type, function (e) { if (calLink(e.target)) loadCalendly(); }, { passive: true });
+  });
+  document.addEventListener('click', function (e) {
+    if (!calLink(e.target)) return;
+    if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+      e.preventDefault();
+      window.Calendly.initPopupWidget({ url: CAL });
+      return;
+    }
+    // Widget not ready yet: the link opens Calendly in a new tab (target="_blank").
+    loadCalendly();
+  });
+
+  /* ------------------------------------------------------------------
+     Slider: endless loop that moves exactly one slide per step.
+     Used by the client reviews and by both logo carousels.
+     Uses the Web Animations API, so no inline styles are written.
+     ------------------------------------------------------------------ */
+  function Slider(root, opts) {
+    opts = opts || {};
+    var track = root.querySelector('[data-track]');
+    if (!track) return null;
+    var viewport = root.querySelector('[data-viewport]') || root;
+    var duration = opts.duration || 550;
+    var zones = [root].concat(opts.controls || []); // slider + its arrow buttons
+    var busy = false, queued = 0, timer = null, hovering = 0, focused = false, inView = true;
+
+    function gap() {
+      var cs = getComputedStyle(track);
+      return parseFloat(cs.columnGap) || parseFloat(cs.gap) || 0;
+    }
+    function perView() {
+      return parseInt(getComputedStyle(track).getPropertyValue('--per-view'), 10) || 1;
+    }
+    function stepSize() {
+      var first = track.firstElementChild;
+      return first ? first.getBoundingClientRect().width + gap() : 0;
+    }
+    function canMove() { return track.children.length > perView(); }
+
+    function syncA11y() {
+      var pv = perView();
+      Array.prototype.forEach.call(track.children, function (slide, i) {
+        var hidden = i >= pv;
+        slide.setAttribute('aria-hidden', hidden ? 'true' : 'false');
+        if ('inert' in slide) slide.inert = hidden;
+      });
+    }
+
+    function run(from, to, done) {
+      if (reduceMotion || typeof track.animate !== 'function') { done(); return; }
+      var anim = track.animate(
+        [{ transform: 'translate3d(' + from + 'px,0,0)' }, { transform: 'translate3d(' + to + 'px,0,0)' }],
+        { duration: duration, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' }
+      );
+      var finished = false;
+      var finish = function () { if (finished) return; finished = true; done(); anim.cancel(); };
+      anim.onfinish = finish;
+      anim.oncancel = finish;
+    }
+
+    function move(dir) {
+      if (!canMove()) return;
+      if (busy) { queued = dir; return; } // run right after the current slide finishes
+      busy = true;
+      if (opts.beforeMove) opts.beforeMove(track);
+      var size = stepSize();
+      var end = function () {
+        busy = false;
+        syncA11y();
+        if (queued) { var d = queued; queued = 0; move(d); }
+      };
+      if (dir > 0) {
+        run(0, -size, function () { track.appendChild(track.firstElementChild); end(); });
+      } else {
+        track.insertBefore(track.lastElementChild, track.firstElementChild);
+        run(-size, 0, end);
+      }
+    }
+    // manual navigation also restarts the autoplay timer
+    function next() { move(1); play(); }
+    function prev() { move(-1); play(); }
+
+    function blocked() {
+      return hovering || focused || !inView || document.hidden || (opts.isPaused && opts.isPaused(track));
+    }
+    function play() {
+      stop();
+      if (!opts.interval || reduceMotion) return;
+      timer = setInterval(function () { if (!blocked()) move(1); }, opts.interval);
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    function inZones(node) {
+      return !!node && zones.some(function (z) { return z.contains(node); });
+    }
+    zones.forEach(function (z) {
+      // only a real mouse pauses on hover (touch taps never "leave")
+      z.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hovering++; });
+      z.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hovering = Math.max(0, hovering - 1); });
+      z.addEventListener('focusin', function () { focused = true; });
+      z.addEventListener('focusout', function (e) { if (!inZones(e.relatedTarget)) focused = false; });
+    });
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) { inView = entries[0].isIntersecting; }, { threshold: 0.2 }).observe(root);
+    }
+
+    // Swipe / drag support (vertical page scrolling still works: touch-action: pan-y)
+    var startX = null, startY = 0, dragged = false;
+    viewport.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      startX = e.clientX; startY = e.clientY; dragged = false;
+    });
+    viewport.addEventListener('pointermove', function (e) {
+      if (startX !== null && Math.abs(e.clientX - startX) > 10) dragged = true;
+    });
+    viewport.addEventListener('pointerup', function (e) {
+      if (startX === null) return;
+      var dx = e.clientX - startX, dy = e.clientY - startY;
+      startX = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { if (dx < 0) next(); else prev(); }
+    });
+    viewport.addEventListener('pointercancel', function () { startX = null; });
+    viewport.addEventListener('click', function (e) {
+      if (dragged) { e.preventDefault(); e.stopPropagation(); dragged = false; }
+    }, true);
+    viewport.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+    var resizeTimer = null;
+    window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(syncA11y, 150); });
+
+    syncA11y();
+    play();
+    return { next: next, prev: prev, play: play, stop: stop };
+  }
+
+  /* ---------------- Client reviews ---------------- */
+  var reviews = document.getElementById('rvSlider');
+  if (reviews) {
+    var rvTrack = reviews.querySelector('[data-track]');
+    var collapseAll = function () {
+      $$('.review.is-open', rvTrack).forEach(function (card) { toggleReview(card, false); });
+    };
+    var toggleReview = function (card, open) {
+      var btn = card.querySelector('.rv-more');
+      card.classList.toggle('is-open', open);
+      if (btn) {
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.textContent = open ? 'See less' : 'See more';
+      }
+      rvTrack.classList.toggle('has-open', !!rvTrack.querySelector('.review.is-open'));
+    };
+    rvTrack.addEventListener('click', function (e) {
+      var btn = e.target.closest('.rv-more');
+      if (!btn) return;
+      var card = btn.closest('.review');
+      toggleReview(card, !card.classList.contains('is-open'));
+    });
+    var prevBtns = $$('[data-rv-prev]'), nextBtns = $$('[data-rv-next]');
+    var rv = Slider(reviews, {
+      interval: 5000,
+      controls: prevBtns.concat(nextBtns),
+      beforeMove: collapseAll,
+      isPaused: function (track) { return !!track.querySelector('.review.is-open'); }
+    });
+    prevBtns.forEach(function (b) { b.addEventListener('click', function () { rv.prev(); }); });
+    nextBtns.forEach(function (b) { b.addEventListener('click', function () { rv.next(); }); });
+  }
+
+  /* ---------------- Recognized by / Certified partner of ---------------- */
+  $$('[data-logo-carousel]').forEach(function (el, i) {
+    Slider(el, { interval: 2600 + i * 400, duration: 600 });
+  });
+
+  /* ------------------------------------------------------------------
+     30-second quiz
+     Step 0 = your details, steps 1-5 = questions, step 6 = submit, step 7 = result
+     ------------------------------------------------------------------ */
+  var QUIZ = [{"q": "What kind of business do you run?", "o": [["Local service business", 0, 0, 0], ["Online store", 0, 0, 0], ["Professional practice (law, health, finance)", 0, 0, 0], ["Something else", 0, 0, 0]]}, {"q": "Where do most of your leads come from today?", "o": [["Google searches", 0, 1, 0], ["Social media or ads", 0, 1, 0], ["Referrals and word of mouth", 1, 0, 0], ["I'm not getting many", 2, 0, 0]]}, {"q": "How many people visit your website in a month?", "o": [["Fewer than 100", 2, 0, 0], ["100 to 1,000", 1, 1, 0], ["More than 1,000", 0, 2, 0], ["I don't know", 0, 0, 2]]}, {"q": "Are you running ads right now?", "o": [["Yes", 0, 1, 1], ["I did in the past", 0, 0, 1], ["Never", 1, 0, 0]]}, {"q": "What's your biggest problem?", "o": [["Not enough people find me", 3, 0, 0], ["People visit but few get in touch", 0, 3, 0], ["I can't tell what's working", 0, 0, 3]]}];
+  var GAPS = ['Not enough people finding the business', 'Visitors not turning into leads', 'No clear view of what is working'];
+  var GAP_KEYS = ['visibility', 'leads', 'tracking'];
+
+  function sendLead(data) {
+    if (!LEAD_ENDPOINT) return;
+    try {
+      var body = JSON.stringify(Object.assign({ page: PAGE, at: new Date().toISOString() }, data));
+      fetch(LEAD_ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: body }).catch(function () {});
+    } catch (err) { /* ignore */ }
+  }
+
+  function postJSON(url, data) {
+    var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+    var t = ctrl ? setTimeout(function () { ctrl.abort(); }, 20000) : null;
+    return fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function (res) {
+      if (t) clearTimeout(t);
+      return res.json().catch(function () { return { ok: false }; });
+    }, function (err) { if (t) clearTimeout(t); throw err; });
+  }
+
+  var box = document.getElementById('quizBox');
+  if (box) initQuiz(box);
+
+  function initQuiz(box) {
+    var TOTAL = QUIZ.length + 2; // details + questions + submit
+    var state = { step: 0, answers: [], lead: null, startedAt: Date.now(), best: 0, sending: false };
+
+    var steps = {
+      details: box.querySelector('[data-step="details"]'),
+      question: box.querySelector('[data-step="question"]'),
+      review: box.querySelector('[data-step="review"]'),
+      result: box.querySelector('[data-step="result"]')
+    };
+    var bars = $$('.quiz-progress span', box);
+    var stepName = box.querySelector('[data-quiz-name]');
+    var stepCount = box.querySelector('[data-quiz-count]');
+    var qTitle = box.querySelector('[data-quiz-q]');
+    var qOptions = box.querySelector('[data-quiz-options]');
+    var form = steps.details;
+    var startBtn = form.querySelector('[data-quiz-start]');
+    var summary = box.querySelector('[data-quiz-summary]');
+    var sendError = box.querySelector('[data-quiz-error]');
+    var submitBtn = box.querySelector('[data-quiz-submit]');
+    var status = box.querySelector('[data-quiz-status]');
+    var retryBtn = box.querySelector('[data-quiz-retry]');
+
+    var fields = {
+      name: form.querySelector('#q-name'),
+      email: form.querySelector('#q-email'),
+      phone: form.querySelector('#q-phone'),
+      website: form.querySelector('#q-website')
+    };
+    var honeypot = form.querySelector('#q-company');
+
+    /* ---- validation ---- */
+    function normalizeUrl(v) {
+      v = v.trim();
+      if (!v) return '';
+      if (!/^https?:\/\//i.test(v)) v = 'https://' + v;
+      return v;
+    }
+    var rules = {
+      name: function (v) { return v.trim().length >= 2 ? '' : 'Please enter your name.'; },
+      email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? '' : 'Please enter a valid email address.'; },
+      phone: function (v) {
+        var digits = v.replace(/\D/g, '');
+        return /^[0-9+().\-\s]+$/.test(v.trim()) && digits.length >= 7 && digits.length <= 15 ? '' : 'Please enter a valid phone number.';
+      },
+      website: function (v) {
+        if (!v.trim()) return '';
+        return /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(:\d+)?(\/\S*)?$/i.test(v.trim()) ? '' : 'Please enter a valid website, e.g. yourbusiness.com';
+      }
+    };
+    function setError(name, msg) {
+      var input = fields[name];
+      var wrap = input.closest('.field');
+      var err = wrap.querySelector('.field-error');
+      wrap.classList.toggle('is-invalid', !!msg);
+      input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      err.textContent = msg;
+      err.hidden = !msg;
+    }
+    function validate(name) {
+      var msg = rules[name](fields[name].value);
+      setError(name, msg);
+      return !msg;
+    }
+    Object.keys(fields).forEach(function (name) {
+      fields[name].addEventListener('blur', function () { if (fields[name].value.trim()) validate(name); });
+      fields[name].addEventListener('input', function () {
+        if (fields[name].closest('.field').classList.contains('is-invalid')) validate(name);
+      });
+    });
+
+    /* ---- rendering ---- */
+    function scores() {
+      var sc = [0, 0, 0];
+      state.answers.forEach(function (a, i) {
+        var o = QUIZ[i] && QUIZ[i].o[a];
+        if (o) { sc[0] += o[1]; sc[1] += o[2]; sc[2] += o[3]; }
+      });
+      return sc;
+    }
+    function bestGap() {
+      var sc = scores();
+      return sc.indexOf(Math.max.apply(null, sc));
+    }
+
+    function renderProgress() {
+      var s = state.step;
+      bars.forEach(function (bar, i) { bar.classList.toggle('is-done', s >= TOTAL || i < s); });
+      if (s === 0) stepName.textContent = 'Your details';
+      else if (s <= QUIZ.length) stepName.textContent = 'Question ' + s + ' of ' + QUIZ.length;
+      else if (s === QUIZ.length + 1) stepName.textContent = 'Submit';
+      else stepName.textContent = 'Your result';
+      stepCount.textContent = s < TOTAL ? 'Step ' + (s + 1) + ' of ' + TOTAL : 'Complete';
+    }
+
+    function renderQuestion(i) {
+      var q = QUIZ[i];
+      qTitle.textContent = (i + 1) + '. ' + q.q;
+      qOptions.innerHTML = '';
+      q.o.forEach(function (o, j) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'qopt';
+        b.textContent = o[0];
+        b.setAttribute('aria-pressed', state.answers[i] === j ? 'true' : 'false');
+        b.addEventListener('click', function () {
+          state.answers[i] = j;
+          state.answers.length = Math.max(state.answers.length, i + 1);
+          go(i + 2 <= QUIZ.length ? i + 2 : QUIZ.length + 1);
+        });
+        qOptions.appendChild(b);
+      });
+    }
+
+    function addRow(dl, label, value) {
+      var dt = document.createElement('dt');
+      dt.textContent = label;
+      var dd = document.createElement('dd');
+      dd.textContent = value;
+      dl.appendChild(dt);
+      dl.appendChild(dd);
+    }
+    function renderSummary() {
+      summary.innerHTML = '';
+      addRow(summary, 'Name', state.lead.name);
+      addRow(summary, 'Email', state.lead.email);
+      addRow(summary, 'Phone', state.lead.phone);
+      addRow(summary, 'Website', state.lead.website || 'Not provided');
+      QUIZ.forEach(function (q, i) { addRow(summary, 'Q' + (i + 1), q.o[state.answers[i]][0]); });
+    }
+
+    function show(name) {
+      Object.keys(steps).forEach(function (k) { steps[k].hidden = k !== name; });
+    }
+    function focusStep(el) {
+      var target = el.querySelector('[data-focus]') || el;
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      try { target.focus({ preventScroll: true }); } catch (err) { target.focus(); }
+      var rect = box.getBoundingClientRect();
+      if (rect.top < 70 || rect.top > window.innerHeight * 0.6) {
+        box.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+    }
+
+    function go(step, noFocus) {
+      state.step = step;
+      var el;
+      if (step === 0) {
+        startBtn.querySelector('[data-label]').textContent = state.answers.length === QUIZ.length ? 'Save and continue' : 'Start the quiz';
+        show('details'); el = steps.details;
+      } else if (step <= QUIZ.length) {
+        renderQuestion(step - 1); show('question'); el = steps.question;
+      } else if (step === QUIZ.length + 1) {
+        renderSummary(); sendError.hidden = true; show('review'); el = steps.review;
+      } else {
+        show('result'); el = steps.result;
+      }
+      renderProgress();
+      if (!noFocus) focusStep(el);
+    }
+
+    /* ---- step 0: details ---- */
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var ok = true, firstBad = null;
+      Object.keys(fields).forEach(function (name) {
+        if (!validate(name)) { ok = false; if (!firstBad) firstBad = fields[name]; }
+      });
+      if (!ok) { firstBad.focus(); return; }
+      state.lead = {
+        name: fields.name.value.trim(),
+        email: fields.email.value.trim(),
+        phone: fields.phone.value.trim(),
+        website: normalizeUrl(fields.website.value)
+      };
+      go(state.answers.length === QUIZ.length ? QUIZ.length + 1 : 1);
+    });
+
+    /* ---- back / edit ---- */
+    box.addEventListener('click', function (e) {
+      if (e.target.closest('[data-quiz-back]')) {
+        go(Math.max(0, state.step - 1));
+      } else if (e.target.closest('[data-quiz-edit]')) {
+        go(0);
+      } else if (e.target.closest('[data-quiz-reset]')) {
+        state.answers = [];
+        go(1);
+      }
+    });
+
+    /* ---- step 6: submit (emails admin + client) ---- */
+    function payload() {
+      var best = bestGap();
+      return {
+        page: PAGE,
+        page_url: location.href.split('#')[0],
+        name: state.lead.name,
+        email: state.lead.email,
+        phone: state.lead.phone,
+        website: state.lead.website,
+        answers: state.answers.slice(0, QUIZ.length),
+        answers_text: QUIZ.map(function (q, i) { return { question: q.q, answer: q.o[state.answers[i]][0] }; }),
+        result: GAP_KEYS[best],
+        result_text: GAPS[best],
+        company: honeypot ? honeypot.value : '',
+        elapsed_ms: Date.now() - state.startedAt
+      };
+    }
+
+    function showResult(best, ok) {
+      $$('[data-gap]', steps.result).forEach(function (el) { el.hidden = Number(el.getAttribute('data-gap')) !== best; });
+      status.className = 'quiz-alert ' + (ok ? 'quiz-alert--ok' : 'quiz-alert--err');
+      status.textContent = ok
+        ? 'Done! We\u2019ve emailed your result to ' + state.lead.email + '. Our team has a copy too and will be in touch soon.'
+        : 'Your result is below, but we couldn\u2019t send the email right now. Please try again, or book your free audit call.';
+      retryBtn.hidden = !!ok;
+    }
+
+    function submit(btn) {
+      if (state.sending) return;
+      state.sending = true;
+      var data = payload();
+      var best = bestGap();
+      var labelEl = btn.querySelector('[data-label]') || btn;
+      var label = labelEl.textContent;
+      btn.disabled = true;
+      labelEl.textContent = 'Sending\u2026';
+      sendLead(Object.assign({ source: 'quiz' }, data));
+      postJSON(MAIL_ENDPOINT, data).then(function (res) {
+        return !!(res && res.ok);
+      }, function () { return false; }).then(function (ok) {
+        state.sending = false;
+        btn.disabled = false;
+        labelEl.textContent = label;
+        showResult(best, ok);
+        if (state.step !== TOTAL) go(TOTAL);
+        else focusStep(steps.result);
+      });
+    }
+    submitBtn.addEventListener('click', function () { submit(submitBtn); });
+    retryBtn.addEventListener('click', function () { submit(retryBtn); });
+
+    go(0, true);
+  }
+})();
+</script>
+</body>
+</html>
